@@ -32,7 +32,7 @@ public class OradoresController extends HttpServlet {
          try {
             //System.out.println("AAA");
             String orador = oradorService.getOrador();
-            System.out.println("en controller "+ orador);
+            System.out.println(""+ orador);
             enviar(response,orador);
         } catch (SQLException ex) {
             System.out.println(ex.toString());

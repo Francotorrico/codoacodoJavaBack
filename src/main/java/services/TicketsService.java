@@ -21,7 +21,7 @@ public class TicketsService {
         Gson f=new Gson();
         String result = f.toJson(tickets);
         
-        //System.out.println("En services "+result);
+        System.out.println(""+result.toString());
         return result;
     }
     
@@ -41,6 +41,7 @@ public class TicketsService {
         //(String)
         boolean error= DAO.modifyTicket(newTicket);      
         Result result = new Result(error);
+        //System.out.println(newTicket.toString());
         return GSON.toJson(result);
     }
     public String deleteTicket(String path) throws SQLException{
@@ -48,7 +49,7 @@ public class TicketsService {
         String filter= path.contains("/") ? path.substring(1): path;
         int id= Integer.parseInt(filter);
         int error = DAO.deleteTicket(id);
-        System.out.println("SERVice "+ error);
+        System.out.println("service "+ error);
         Result result = new Result(error ==0);
         return GSON.toJson(result);
     }

@@ -45,7 +45,7 @@ public class OradorDaoMysql {
             
             Persona orador = new Persona(id, nombre, apellido, tema);
             l.add(orador);
-            System.out.println(orador);
+            //System.out.println(orador);
         }
         
         

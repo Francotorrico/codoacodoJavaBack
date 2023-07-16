@@ -8,6 +8,7 @@ import daos.TicketsDaoMysql;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import static java.lang.Integer.parseInt;
 import java.sql.SQLException;
 import java.util.Scanner;
 import javax.servlet.RequestDispatcher;
@@ -33,9 +34,19 @@ public class ReservasController extends HttpServlet {
     protected void doGet(HttpServletRequest req, 
             HttpServletResponse resp) 
             throws ServletException, IOException {
-        
+      
         RequestDispatcher dispatcher= req.getRequestDispatcher("./../listado.jsp");
         dispatcher.forward(req, resp);
+        /*
+         try {
+            System.out.println("Reservas");
+            String tickets = ticketsService.getTickets();
+            System.out.println("en controller "+ tickets);
+            //enviar(resp,tickets);
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }*/
+       
     }
 
     @Override
@@ -75,9 +86,25 @@ public class ReservasController extends HttpServlet {
     protected void doPut(HttpServletRequest req, 
             HttpServletResponse resp) 
             throws ServletException, IOException {
-    
+    /*
+        int id = Integer.parseInt(req.getParameter("id"));
+        String nombre = req.getParameter("nombre");
+        String apellido = req.getParameter("apellido");
+        String correo = req.getParameter("correo");
+        int cantidad = Integer.parseInt(req.getParameter("cantidad"));
+        String categoria = req.getParameter("categoria");
+        
+
+        Ticket ticket= new Ticket(id,cantidad,nombre, apellido, correo,categoria);
+        System.out.println(ticket.getId());
+        System.out.println(ticket.getNombre());
+        System.out.println(ticket.getApellido());
+        System.out.println(ticket.getCorreo());
+        System.out.println(ticket.getCantidad());
+        System.out.println(ticket.getCategoria());*/
        try {
            String body = bodyToString(req.getInputStream());
+           System.out.println(""+body);
            String result = ticketsService.modifyTicket(body);
            enviar(resp, result);
        } catch (SQLException ex) {

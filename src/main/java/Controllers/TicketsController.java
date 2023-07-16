@@ -108,9 +108,9 @@ public class TicketsController extends HttpServlet {
         //response.sendRedirect("http://google.com"); 
         //processRequest(request, response);
          try {
-            System.out.println("AAA");
+            System.out.println("Ticket Controller");
             String tickets = ticketservice.getTickets();
-            System.out.println("en controller "+ tickets);
+            System.out.println(""+ tickets);
             enviar(response,tickets);
         } catch (SQLException ex) {
             System.out.println(ex.toString());
@@ -135,8 +135,10 @@ public class TicketsController extends HttpServlet {
         
        try {
             String body = bodyToString(request.getInputStream()); // la clase privada creada
+            System.out.println("");
             System.out.println(body);
             String result = ticketservice.postTicket(body);
+            
             enviar(response, result);
        } catch (SQLException ex) {
            System.out.println(ex.toString());
@@ -151,6 +153,7 @@ public class TicketsController extends HttpServlet {
     
        try {
            String body = bodyToString(req.getInputStream());
+           System.out.println(body);
            String result = ticketservice.modifyTicket(body);
            enviar(resp, result);
        } catch (SQLException ex) {
@@ -168,6 +171,7 @@ public class TicketsController extends HttpServlet {
            String path=req.getPathInfo();
            String result = ticketservice.deleteTicket(path);
            enviar(resp, result);
+           System.out.println("delete de id ticket: "+ path.substring(1));
        } catch (SQLException ex) {
            System.out.println(ex.toString());
        }

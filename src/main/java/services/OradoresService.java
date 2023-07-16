@@ -26,7 +26,7 @@ public class OradoresService {
         Gson f=new Gson();
         String result = f.toJson(oradores);
         
-        //System.out.println("En services "+result);
+        System.out.println("En services Orador:  "+result);
         return result;
     }
     

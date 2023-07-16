@@ -44,7 +44,7 @@ public class TicketsDaoMysql {
             
             Ticket ticket = new Ticket(id, cantidad, nombre, apellido, correo, categoria);
             l.add(ticket);
-            System.out.println(ticket);
+            //System.out.println(ticket);
         }
         
         
